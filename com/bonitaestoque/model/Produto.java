@@ -15,10 +15,14 @@ public class Produto {
 	private Long id;
 
 	private String nome;
-	private Float valor;
+	private double valor;
 	private String tamanho;
+	
+	public Produto() {
+		
+	}
 
-	public Produto(String nome, Float valor, String tamanho) {
+	public Produto(String nome, double valor, String tamanho) {
 		super();
 		this.nome = nome;
 		this.valor = valor;
@@ -41,11 +45,11 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public Float getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(Float valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 
