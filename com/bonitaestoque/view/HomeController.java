@@ -17,6 +17,9 @@ public class HomeController implements Initializable {
 
 	@FXML
     private ScrollPane scrList = null;
+	
+	@FXML
+	private Button button;
 
     @FXML
     private VBox vbList = null;

@@ -3,49 +3,70 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" minHeight="60.0" minWidth="0.0" prefHeight="60.0" prefWidth="875.0" style="-fx-background-color: #ECE7FF; -fx-border-color: #CCC2F2; -fx-border-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="hbProduct" alignment="CENTER_LEFT" minHeight="60.0" minWidth="0.0" prefHeight="60.0" prefWidth="875.0" style="-fx-background-color: #ECE7FF; -fx-border-color: #CCC2F2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label alignment="TOP_LEFT" text="Camiseta Nike" textFill="#191326">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="60.0" />
-         </HBox.margin>
-      </Label>
-      <Label alignment="TOP_LEFT" text="R$59,90" textFill="#191326">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="70.0" />
-         </HBox.margin>
-      </Label>
-      <Label alignment="TOP_LEFT" text="M" textFill="#191326">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="120.0" />
-         </HBox.margin>
-      </Label>
-      <Label alignment="TOP_LEFT" text="12" textFill="#191326">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="160.0" />
-         </HBox.margin>
-      </Label>
-      <Label alignment="TOP_LEFT" text="Verão/Camiseta" textFill="#191326">
-         <font>
-            <Font size="16.0" />
-         </font>
-         <HBox.margin>
-            <Insets left="130.0" />
-         </HBox.margin>
-      </Label>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="Camiseta Nike" textAlignment="CENTER" textFill="#191326">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="R$59,90" textAlignment="CENTER" textFill="#191326">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="M" textAlignment="CENTER" textFill="#191326">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="12" textAlignment="CENTER" textFill="#191326">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="Verão/Camiseta" textAlignment="CENTER" textFill="#191326">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets top="15.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </HBox>
