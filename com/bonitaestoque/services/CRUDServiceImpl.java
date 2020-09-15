@@ -60,16 +60,33 @@ public class CRUDServiceImpl<E> implements CRUDService<E> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<E> getByName(Class<E> type, String name) {
-		
+
 		entityM = conn.createConn();
-		
+
 //		select u from users u where u.segundoNome =:sg
-		Query query = entityM.createQuery("select pr from "+type.getName()+" pr where pr.nome like :name");
-		query.setParameter("name", "%"+name+"%");
+		Query query = entityM.createQuery("select pr from " + type.getName() + " pr where pr.nome like :name");
+		query.setParameter("name", "%" + name + "%");
 
 		entityM.close();
 //		
 		return query.getResultList();
+	}
+
+	public E update(E element) {
+		entityM = conn.createConn();
+		
+		entityM.getTransaction().begin();
+		E updatedElement = entityM.merge(element);
+		entityM.getTransaction().commit();
+		entityM.close();
+
+		return updatedElement;
+	}
+
+	@Override
+	public E update(Class<E> type, Long elementId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

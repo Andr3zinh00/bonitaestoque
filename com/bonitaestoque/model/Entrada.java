@@ -27,18 +27,23 @@ public class Entrada {
 	@JoinColumn(name = "id_fornecedor", referencedColumnName = "id")
 	private Fornecedor fornecedor;
 
+	@ManyToOne
+	@JoinColumn(name = "id_funcionario", referencedColumnName = "id")
+	private Funcionario funcionario;
+
 	@ManyToMany
-	@JoinColumn(name = "productId", referencedColumnName = "id")
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private List<Produto> entrada_produtos;
 
 	public Entrada(String descricao, Date data_entrada, Float preco_custo, Fornecedor fornecedor,
-			List<Produto> entrada_produtos) {
+			Funcionario funcionario, List<Produto> entrada_produtos) {
 		super();
 		this.entrada_produtos = entrada_produtos;
 		this.descricao = descricao;
 		this.data_entrada = data_entrada;
 		this.preco_custo = preco_custo;
 		this.fornecedor = fornecedor;
+		this.funcionario = funcionario;
 	}
 
 	public Fornecedor getFornecedor() {

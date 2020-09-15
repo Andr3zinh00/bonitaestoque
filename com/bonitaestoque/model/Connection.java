@@ -26,7 +26,9 @@ public class Connection {
 	 * @return
 	 */
 	public EntityManager createConn() {
-		emf = emf == null ? Persistence.createEntityManagerFactory("bonitaestoque") : emf;
+		if (emf == null)
+			emf = Persistence.createEntityManagerFactory("bonitaestoque");
+
 		return et != null && et.isOpen() ? et : emf.createEntityManager();
 	}
 

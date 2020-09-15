@@ -1,6 +1,9 @@
+
 package application;
 	
 import java.io.IOException;
+
+import com.bonitaestoque.model.Connection;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +16,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			Connection.getInstance();
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("../com/bonitaestoque/view/fxml/home.fxml"));
 			primaryStage.setScene(new Scene(root));
