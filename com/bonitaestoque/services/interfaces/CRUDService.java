@@ -13,6 +13,13 @@ public interface CRUDService<E> {
 	E getById(Class<E> type, Long id);
 
 	/**
+	 * Atualiza um elemento no banco de dados
+	 * @param element
+	 * @return
+	 */
+	E update(Class<E>type, Long elementId);
+	
+	/**
 	 * Cria um elemento no banco de dados
 	 * 
 	 * @param element
