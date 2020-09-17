@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1368.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bonitaestoque.view.HomeController">
    <children>
@@ -130,7 +131,7 @@
          <children>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <HBox alignment="CENTER_LEFT" layoutX="34.0" layoutY="97.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="890.0" style="-fx-background-color: #CCC2F2;">
+                  <HBox alignment="CENTER_LEFT" layoutX="34.0" layoutY="97.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="890.0" style="-fx-background-color: #ECE7FF;">
                      <children>
                         <Label alignment="TOP_LEFT" text="Nome" textFill="#191326">
                            <font>
@@ -198,6 +199,11 @@
                         <TextField alignment="TOP_LEFT" prefHeight="27.0" prefWidth="329.0" promptText="Pesquisar..." style="-fx-background-color: #ece7ff;" />
                      </children>
                   </HBox>
+                  <Text fill="#191326" layoutX="34.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </children>

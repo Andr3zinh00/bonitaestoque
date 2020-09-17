@@ -38,8 +38,8 @@ public class HomeController implements Initializable {
         Node[] nodes = new Node[10];
         for (int i = 0; i < nodes.length; i++) {
             try {
-                nodes[i] = FXMLLoader.load(getClass().getResource("../view/fxml/itemProduct.fxml"));
-
+                nodes[i] = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduct.fxml"));
+                
                 vbList.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();

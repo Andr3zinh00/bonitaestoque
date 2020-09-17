@@ -14,7 +14,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Parent root;
-			root = FXMLLoader.load(getClass().getResource("../com/bonitaestoque/view/fxml/home.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../com/bonitaestoque/view/fxml/Home.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setMaximized(true);
 			primaryStage.show();
