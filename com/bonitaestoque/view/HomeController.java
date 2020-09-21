@@ -100,6 +100,19 @@ public class HomeController implements Initializable {
 	}
 
 	public void listProduct() {
+<<<<<<< HEAD
+        Node[] nodes = new Node[10];
+        for (int i = 0; i < nodes.length; i++) {
+            try {
+                nodes[i] = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduct.fxml"));
+                
+                vbList.getChildren().add(nodes[i]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+		
+=======
 		Node[] nodes = new Node[10];
 		for (int i = 0; i < nodes.length; i++) {
 			try {
@@ -111,6 +124,7 @@ public class HomeController implements Initializable {
 			}
 		}
 
+>>>>>>> 4a720a8ff232011315cbefc7abd630a4a05b058e
 	}
 
 }
