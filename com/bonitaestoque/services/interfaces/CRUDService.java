@@ -42,7 +42,7 @@ public interface CRUDService<E> {
 	List<E> getAll(Class<E> type);
 
 	/**
-	 * Pega por uma Query especifica
+	 * Pega por nome
 	 * 
 	 * @param name
 	 * @return
