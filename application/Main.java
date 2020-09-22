@@ -1,10 +1,8 @@
-
 package application;
 	
 import java.io.IOException;
 
 import com.bonitaestoque.model.Connection;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -17,8 +15,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			Connection.getInstance();
+	    	
 			Parent root;
 			root = FXMLLoader.load(getClass().getResource("../com/bonitaestoque/view/fxml/Home.fxml"));
+			
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setMaximized(true);
 			primaryStage.show();
@@ -31,4 +31,8 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	
+	
+	
 }

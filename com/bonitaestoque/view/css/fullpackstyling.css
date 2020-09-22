@@ -1,9 +1,12 @@
 .button
 {
+	
 -fx-background-color :  #ECE7FF;
 }
 .button:hover
 {
+-fx-scale-y: 1.03;
+-fx-scale-x: 1.03;
 -fx-background-color : #D6CEF2 ;
 }
 .button:pressed
@@ -13,20 +16,38 @@
 
 .btnNovoProduto
 {
--fx-background-color : #393351;
--fx-background-radius :  20;
+-fx-background-color : #191326;
+-fx-background-radius :  4;
 }
 .btnNovoProduto:hover
 {
--fx-background-color : #524A7B ;
--fx-background-radius :  20;
+-fx-background-color : #393351;
 }
 .btnNovoProduto:pressed
 {
--fx-background-color : #2F2B43 ;
--fx-background-radius :  20;
+-fx-background-color : #8d7bd4 ;
 }
-
+.btnCancelar
+{
+-fx-background : #FFF;
+-fx-border-color: #191326;
+-fx-background-radius : 4;
+-fx-border-radius: 4;
+}
+.btnCancelar:hover
+{
+-fx-background-color : #8d7bd4;
+-fx-opacity: 0.8;
+}
+.btnCancelar:pressed
+{
+-fx-background-color : #2F2B43 ;
+}
+.hbProduct{
+	-fx-background-color:  #ECE7FF;
+	-fx-border-color:  #CCC2F2;
+	-fx-border-radius: 4;
+}
 .hbProduct:hover{
 	-fx-background-color : #CCC2F2;
 }

@@ -2,13 +2,19 @@ package com.bonitaestoque.view;
 
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,12 +25,16 @@ import java.util.ResourceBundle;
 import com.bonitaestoque.model.Produto;
 import com.bonitaestoque.services.CRUDServiceImpl;
 
+import application.Observer;
 import javafx.fxml.Initializable;
 
 public class HomeController implements Initializable {
 
 	@FXML
 	private ScrollPane scrList = null;
+	
+	@FXML
+    private AnchorPane anContainer;
 
 	@FXML
 	private Button button;
@@ -42,13 +52,44 @@ public class HomeController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("HELLO");
-		listProduct();
+		try {
+			
+			Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
+				
+				@Override
+				public void onScreenChanged(Object userData) {
+				}
+			});
+			
+			getAllProducts();
+			listProduct();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		System.out.println("Antes de printar os produtos");
 
-		getAllProducts();
 	}
+	
+    @FXML
+    void novoProduto(ActionEvent event) throws IOException {
+    	Node node = (Node) event.getSource();
+    	
+    	Stage stage = (Stage) node.getScene().getWindow();
+    	Stage stageNovoProduto = new Stage();
+    	Parent root = null;
+    	
+    	URL url = getClass().getResource("../view/fxml/NovoProduto.fxml");
+    	root = FXMLLoader.load(url); 
+
+    	stageNovoProduto.initModality(Modality.APPLICATION_MODAL);
+        stageNovoProduto.initOwner(stage);
+    	
+    	Scene scene = new Scene(root);
+    	stageNovoProduto.setScene(scene);
+    	stageNovoProduto.setMaximized(true);
+    	stageNovoProduto.show();
+    }
 
 	/**
 	 * 
@@ -61,7 +102,7 @@ public class HomeController implements Initializable {
 
 				@Override
 				protected List<Produto> call() throws Exception {
-					System.out.println("entrei");
+					
 					return service.getAll(Produto.class);
 				}
 			};
@@ -99,32 +140,28 @@ public class HomeController implements Initializable {
 		}
 	}
 
-	public void listProduct() {
-<<<<<<< HEAD
-        Node[] nodes = new Node[10];
-        for (int i = 0; i < nodes.length; i++) {
-            try {
-                nodes[i] = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduct.fxml"));
-                
+	public void listProduct() throws IOException {
+		vbList.getChildren().clear();
+        Node[] nodes = new Node[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+        		Object obj = list.get(i);
+        		Produto p = (Produto) obj;
+        		System.out.println(p.getNome());
+        		nodes[i] = setProduct(nodes[i], obj);    
                 vbList.getChildren().add(nodes[i]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
-		
-=======
-		Node[] nodes = new Node[10];
-		for (int i = 0; i < nodes.length; i++) {
-			try {
-				nodes[i] = FXMLLoader.load(getClass().getResource("../view/fxml/itemProduct.fxml"));
+	}
 
-				vbList.getChildren().add(nodes[i]);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
->>>>>>> 4a720a8ff232011315cbefc7abd630a4a05b058e
+	private Node setProduct(Node nodes, Object object) throws IOException {
+		Observer.notifyAllListeners(object);
+			nodes = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduto.fxml"));
+		return nodes;
+	}
+	
+	@FXML
+    void listSize(ActionEvent event) throws IOException {
+		System.out.println(list.size());
+		listProduct();
 	}
 
 }

@@ -15,18 +15,20 @@ public class Produto {
 	private Long id;
 
 	private String nome;
-	private double valor;
-	private String tamanho;
+	private double precoCompra;
+	private double precoVenda;
+	private String descricao;
 	
 	public Produto() {
 		
 	}
 
-	public Produto(String nome, double valor, String tamanho) {
+	public Produto(String nome, double precoCompra, double precoVenda, String descricao) {
 		super();
 		this.nome = nome;
-		this.valor = valor;
-		this.tamanho = tamanho;
+		this.precoCompra = precoCompra;
+		this.descricao = descricao;
+		this.precoVenda = precoVenda;
 	}
 
 	public Long getId() {
@@ -45,25 +47,33 @@ public class Produto {
 		this.nome = nome;
 	}
 
-	public double getValor() {
-		return valor;
+	public double getPrecoCompra() {
+		return precoCompra;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setPrecoCompra(double precoCompra) {
+		this.precoCompra = precoCompra;
+	}
+	
+	public double getPrecoVenda() {
+		return precoVenda;
 	}
 
-	public String getTamanho() {
-		return tamanho;
+	public void setPrecoVenda(double precoVenda) {
+		this.precoVenda = precoVenda;
 	}
 
-	public void setTamanho(String tamanho) {
-		this.tamanho = tamanho;
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override
 	public String toString() {
-		return "Produto [nome=" + nome + ", valor=" + valor + ", tamanho=" + tamanho + "]";
+		return "Produto [nome=" + nome + ", PrecoCompra=" + precoCompra + ", PrecoVenda=" + precoVenda + ", descricao=" + descricao + "]";
 	}
 
 }

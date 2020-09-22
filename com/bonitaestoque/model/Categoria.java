@@ -19,25 +19,23 @@ public class Categoria {
 	private String descricao;
 	private Boolean danificado;
 	private String nome;
-	private Integer quantidade;
 
 	@ManyToMany
 	@JoinColumn(name = "id")
 	private List<Produto> produtos;
 
-	public Categoria(String descricao, Boolean danificado, String nome, Integer quantidade, List<Produto> produtos) {
+	public Categoria(String descricao, Boolean danificado, String nome, List<Produto> produtos) {
 		super();
 		this.produtos = produtos;
 		this.descricao = descricao;
 		this.danificado = danificado;
 		this.nome = nome;
-		this.quantidade = quantidade;
 	}
 
 	@Override
 	public String toString() {
 		return "Categoria [id=" + id + ", descricao=" + descricao + ", danificado=" + danificado + ", nome=" + nome
-				+ ", quantidade=" + quantidade + ", produtos=" + produtos + "]";
+				+ ", produtos=" + produtos + "]";
 	}
 
 	public Long getId() {
@@ -70,14 +68,6 @@ public class Categoria {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public Integer getQuantidade() {
-		return quantidade;
-	}
-
-	public void setQuantidade(Integer quantidade) {
-		this.quantidade = quantidade;
 	}
 
 }

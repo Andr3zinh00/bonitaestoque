@@ -19,10 +19,12 @@ public class Tamanho {
 	private Long id;
 	
 	private String tipo;
+	private Integer quantidade;
 	
-	public Tamanho(String tipo, List<Produto> list_produto) {
+	public Tamanho(String tipo, Integer quantidade, List<Produto> list_produto) {
 		super();
 		this.tipo = tipo;
+		this.quantidade = quantidade;
 		this.list_produto = list_produto;
 	}
 
@@ -40,7 +42,7 @@ public class Tamanho {
 
 	@Override
 	public String toString() {
-		return "Tamanho [id=" + id + ", tipo=" + tipo + ", list_produto=" + list_produto + "]";
+		return "Tamanho [id=" + id + ", tipo=" + tipo + ", quantidade=" + quantidade + ", list_produto=" + list_produto +  "]";
 	}
 
 	public String getTipo() {
@@ -57,6 +59,15 @@ public class Tamanho {
 
 	public void setList_produto(List<Produto> list_produto) {
 		this.list_produto = list_produto;
+	}
+	
+
+	public Integer getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Integer quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	
