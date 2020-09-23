@@ -16,7 +16,7 @@
 				value="jdbc:postgresql://localhost:5432/bonitaestoque" />
 			<property name="hibernate.connection.username"
 				value="postgres" />
-			<property name="hibernate.connection.password" value="postgre" />
+			<property name="hibernate.connection.password" value="1234" />
 			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 

@@ -32,9 +32,9 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private ScrollPane scrList = null;
-	
+
 	@FXML
-    private AnchorPane anContainer;
+	private AnchorPane anContainer;
 
 	@FXML
 	private Button button;
@@ -52,47 +52,39 @@ public class HomeController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
-			
-			Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
-				
-				@Override
-				public void onScreenChanged(Object userData) {
-				}
-			});
-			
-			getAllProducts();
-			listProduct();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
+
+			@Override
+			public void onScreenChanged(Object userData) {
+			}
+		});
+
+		getAllProducts();
 
 		System.out.println("Antes de printar os produtos");
 
 	}
-	
-    @FXML
-    void novoProduto(ActionEvent event) throws IOException {
-    	Node node = (Node) event.getSource();
-    	
-    	Stage stage = (Stage) node.getScene().getWindow();
-    	Stage stageNovoProduto = new Stage();
-    	Parent root = null;
-    	
-    	URL url = getClass().getResource("../view/fxml/NovoProduto.fxml");
-    	root = FXMLLoader.load(url); 
 
-    	stageNovoProduto.initModality(Modality.APPLICATION_MODAL);
-        stageNovoProduto.initOwner(stage);
-    	
-    	Scene scene = new Scene(root);
-    	stageNovoProduto.setScene(scene);
-    	stageNovoProduto.setMaximized(true);
-    	stageNovoProduto.show();
-    }
+	@FXML
+	void novoProduto(ActionEvent event) throws IOException {
+		Node node = (Node) event.getSource();
+
+		Stage stage = (Stage) node.getScene().getWindow();
+		Stage stageNovoProduto = new Stage();
+		Parent root = null;
+
+		URL url = getClass().getResource("../view/fxml/NovoProduto.fxml");
+		root = FXMLLoader.load(url);
+
+		stageNovoProduto.initModality(Modality.APPLICATION_MODAL);
+		stageNovoProduto.initOwner(stage);
+
+		Scene scene = new Scene(root);
+		stageNovoProduto.setScene(scene);
+		stageNovoProduto.setMaximized(true);
+		stageNovoProduto.show();
+	}
 
 	/**
 	 * 
@@ -105,16 +97,16 @@ public class HomeController implements Initializable {
 
 				@Override
 				protected List<Produto> call() throws Exception {
-					
+
 					return service.getAll(Produto.class);
 				}
 			};
 
 			// como o nome sugere, vai ser chamado quando a task for sucedida
 			/**
-			 *  JOAO, FAZ O QUE VC TAVA FAZENDO NO listProducts 
-			 *  AQUI DENTRO NO handle(), SE VC USAR "task.getValue()"
-			 *  VAI PEGAR A LISTA DE TODOS OS PRODUTOS DO BANCO DE DADOS 
+			 * JOAO, FAZ O QUE VC TAVA FAZENDO NO listProducts AQUI DENTRO NO handle(), SE
+			 * VC USAR "task.getValue()" VAI PEGAR A LISTA DE TODOS OS PRODUTOS DO BANCO DE
+			 * DADOS
 			 */
 			task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 
@@ -124,8 +116,15 @@ public class HomeController implements Initializable {
 					list.addAll(task.getValue());
 					System.out.println(isLoadingProducts);
 					System.out.println(list);
-					
-					//isso é apenas um teste pra testar o update, ta funcionando
+
+					try {
+						listProduct();
+					} catch (IOException | InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					// isso é apenas um teste pra testar o update, ta funcionando
 //					Produto p = list.get(0);
 //					p.setNome("TESTE2");
 //					service.update(p);
@@ -145,24 +144,26 @@ public class HomeController implements Initializable {
 
 	public void listProduct() throws IOException, InterruptedException {
 		vbList.getChildren().clear();
-        Node[] nodes = new Node[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-        		Object obj = list.get(i);
-        		Produto p = (Produto) obj;
-        		System.out.println(p.getNome());
-        		nodes[i] = setProduct(nodes[i], obj);    
-                vbList.getChildren().add(nodes[i]);
-        }
+		Node[] nodes = new Node[list.size()];
+		for (int i = 0; i < list.size(); i++) {
+			Produto p = list.get(i);
+			System.out.println(p+" produto forloop");
+			nodes[i] = setProduct(nodes[i], p);
+			vbList.getChildren().add(nodes[i]);
+		}
 	}
 
 	private Node setProduct(Node nodes, Object object) throws IOException {
+		nodes = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduto.fxml"));
+		//deixa a linha de cima ai, vc estava notificando os listeners antes de instanciar as classes, se fizesse
+		//do jeito que tava fazendo vai dar um nullpointer pq o listener da classe de itemController 
+		//vai receber um objeto vazio!!
 		Observer.notifyAllListeners(object);
-			nodes = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduto.fxml"));
 		return nodes;
 	}
-	
+
 	@FXML
-    void listSize(ActionEvent event) throws IOException, InterruptedException {
+	void listSize(ActionEvent event) throws IOException, InterruptedException {
 		listProduct();
 	}
 

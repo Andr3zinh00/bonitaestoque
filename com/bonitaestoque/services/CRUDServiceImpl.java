@@ -18,7 +18,6 @@ public class CRUDServiceImpl<E> implements CRUDService<E> {
 
 	@Override
 	public void create(E element) {
-		System.out.println("OLÁ MUNDO");
 		System.out.println(element);
 		entityM = conn.createConn();
 		entityM.getTransaction().begin();
@@ -37,6 +36,8 @@ public class CRUDServiceImpl<E> implements CRUDService<E> {
 		entityM.close();
 	}
 
+	
+	@Override
 	public List<E> getAll(Class<E> type) {
 		entityM = conn.createConn();
 

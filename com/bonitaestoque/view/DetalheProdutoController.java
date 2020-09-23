@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.bonitaestoque.model.Categoria;
 import com.bonitaestoque.model.Produto;
 
 import application.Observer;
@@ -163,7 +162,7 @@ public class DetalheProdutoController implements Initializable{
 	@FXML
     void addTamanho(ActionEvent event) throws IOException {
     	System.out.println("AddTam:" + lbTamanho.getText()+" "+lbQuantidade.getText());
-    	Tamanho t = new Tamanho()
+//    	Tamanho t = new Tamanho();
     	Node node = null;
     	node = setTamanho(node);
         vbTamanho.getChildren().add(node);
