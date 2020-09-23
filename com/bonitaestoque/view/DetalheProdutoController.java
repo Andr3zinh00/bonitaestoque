@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.bonitaestoque.model.Categoria;
+import com.bonitaestoque.model.Produto;
+
 import application.Observer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -115,7 +118,12 @@ public class DetalheProdutoController implements Initializable{
 				
 				@Override
 				public void onScreenChanged(Object userData) {
-					System.out.println("Nova tela " + userData );
+					Produto p = (Produto) userData;
+					lbIdProduto.setText(""+p.getId());
+					lbNome.setText(p.getNome());
+					lbPrecoCompra.setText(""+p.getPrecoCompra());
+					lbPrecoVenda.setText(""+p.getPrecoVenda());
+					lbDescricao.setText(p.getDescricao());
 					
 				}
 			});
@@ -155,6 +163,7 @@ public class DetalheProdutoController implements Initializable{
 	@FXML
     void addTamanho(ActionEvent event) throws IOException {
     	System.out.println("AddTam:" + lbTamanho.getText()+" "+lbQuantidade.getText());
+    	Tamanho t = new Tamanho()
     	Node node = null;
     	node = setTamanho(node);
         vbTamanho.getChildren().add(node);

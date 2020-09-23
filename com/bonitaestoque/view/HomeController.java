@@ -65,6 +65,9 @@ public class HomeController implements Initializable {
 			listProduct();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		System.out.println("Antes de printar os produtos");
@@ -140,7 +143,7 @@ public class HomeController implements Initializable {
 		}
 	}
 
-	public void listProduct() throws IOException {
+	public void listProduct() throws IOException, InterruptedException {
 		vbList.getChildren().clear();
         Node[] nodes = new Node[list.size()];
         for (int i = 0; i < list.size(); i++) {
@@ -159,8 +162,7 @@ public class HomeController implements Initializable {
 	}
 	
 	@FXML
-    void listSize(ActionEvent event) throws IOException {
-		System.out.println(list.size());
+    void listSize(ActionEvent event) throws IOException, InterruptedException {
 		listProduct();
 	}
 

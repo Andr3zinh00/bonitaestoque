@@ -15,7 +15,8 @@ private static ArrayList<OnChangeScreen> listener = new ArrayList<>();
 	
 	public static void notifyAllListeners(Object userData) {
 		for(OnChangeScreen l : listener) {
-			System.out.println(userData.toString());
+			System.out.println(listener.toString());
+			System.out.println(""+userData.toString());
 			l.onScreenChanged(userData);
 			}
 	}	

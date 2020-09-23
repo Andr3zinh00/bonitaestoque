@@ -32,7 +32,7 @@ public class TagTamanhoController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		lbTamanhoQtd.setText("0");
+		
 	}
 
     @FXML
@@ -42,20 +42,22 @@ public class TagTamanhoController implements Initializable{
 
     @FXML
     void bntMais(ActionEvent event) {
-    	System.out.println("AAAAAAAAAAAAAAAAAAAAAAAA");
     	int tamanhoQtd = Integer.parseInt(lbTamanhoQtd.getText());
     	
-    	if(tamanhoQtd<=0) {
-    		return;
-    	}
-    	
-    	tamanhoQtd = 1;
+    	tamanhoQtd += 1;
     	
     	lbTamanhoQtd.setText(""+tamanhoQtd);
     }
 
     @FXML
     void bntMenos(ActionEvent event) {
-
+    	int tamanhoQtd = Integer.parseInt(lbTamanhoQtd.getText());
+    	if(tamanhoQtd == 0) {
+    		return;
+    	}
+    	
+    	tamanhoQtd -= 1;
+    	
+    	lbTamanhoQtd.setText(""+tamanhoQtd);
     }
 }

@@ -35,7 +35,10 @@ public class ItemProdutoController implements Initializable{
     
     @FXML
     private Label lbCategoria;
-
+    
+    private long idProdu = 9999999;
+    Produto p;
+    
     @FXML
     void abrirTelaDetalhe(MouseEvent event) throws IOException {
     	Node node = (Node) event.getSource();
@@ -49,10 +52,10 @@ public class ItemProdutoController implements Initializable{
 
     	stageDetalheProduto.initModality(Modality.APPLICATION_MODAL);
         stageDetalheProduto.initOwner(stage);
-    	
+        
     	Scene scene = new Scene(root);
     	
-    	
+    	Observer.notifyAllListeners(p);
     	stageDetalheProduto.setScene(scene);
     	stageDetalheProduto.setMaximized(true);
     	stageDetalheProduto.show();
@@ -64,11 +67,14 @@ public class ItemProdutoController implements Initializable{
 			
 			@Override
 			public void onScreenChanged(Object userData) {
-				Produto p = (Produto) userData;
-				System.out.println("setando produto"+ p.getNome());
+				if(idProdu == 9999999) {
+					
+				p = (Produto) userData;
+				idProdu = p.getId();
+				System.out.println("setando produto "+ p.getId());
 				productName.setText(p.getNome());
-				productPrice.setText(String.valueOf(p.getPrecoVenda()));
-			}
+				productPrice.setText("R$"+p.getPrecoVenda());
+			}}
 		});
 	}
     

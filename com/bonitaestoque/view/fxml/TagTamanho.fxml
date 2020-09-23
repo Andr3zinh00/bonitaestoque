@@ -9,7 +9,7 @@
 <HBox fx:id="hbTamanho" alignment="CENTER_LEFT" minHeight="43.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="43.0" prefWidth="530.0" style="-fx-background-color: ECE7FF; -fx-border-radius: 60; -fx-background-radius: 60;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bonitaestoque.view.TagTamanhoController">
    <children>
       <Text fx:id="lbTamanhoNome" fill="#191326" strokeType="OUTSIDE" strokeWidth="0.0" text="M" textAlignment="CENTER" wrappingWidth="143.13671875" />
-      <Button fx:id="btnTamanhoMenos" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" style="-fx-border-color: D6CEF2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" text="-" textFill="#191326">
+      <Button fx:id="btnTamanhoMenos" mnemonicParsing="false" onAction="#bntMenos" prefHeight="25.0" prefWidth="25.0" style="-fx-border-color: D6CEF2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" text="-" textFill="#191326">
          <HBox.margin>
             <Insets left="30.0" />
          </HBox.margin>
