@@ -147,7 +147,6 @@ public class HomeController implements Initializable {
 		Node[] nodes = new Node[list.size()];
 		for (int i = 0; i < list.size(); i++) {
 			Produto p = list.get(i);
-			System.out.println(p+" produto forloop");
 			nodes[i] = setProduct(nodes[i], p);
 			vbList.getChildren().add(nodes[i]);
 		}

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.bonitaestoque.model.Categoria;
 import com.bonitaestoque.model.Produto;
 
 import application.Observer;
@@ -109,31 +110,39 @@ public class DetalheProdutoController implements Initializable{
     @FXML
     private Text lbIdProduto;
     
+    private Produto p;
+    
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		try {
+		Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
 			
-			Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
+			@Override
+			public void onScreenChanged(Object userData) {
 				
-				@Override
-				public void onScreenChanged(Object userData) {
-					Produto p = (Produto) userData;
-					lbIdProduto.setText(""+p.getId());
-					lbNome.setText(p.getNome());
-					lbPrecoCompra.setText(""+p.getPrecoCompra());
-					lbPrecoVenda.setText(""+p.getPrecoVenda());
-					lbDescricao.setText(p.getDescricao());
-					
+				if(p == null) {
+					setCamposProduto(userData);
+					try {
+						listCategoria();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
-			});
-			
-			listCategoria();
-			listTamanho();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+				
+				
+			}
+		});
 	}
-    public void listTamanho() throws IOException {
+    protected void setCamposProduto(Object userData) {
+    	p = (Produto) userData;
+		lbIdProduto.setText(""+p.getId());
+		lbNome.setText(p.getNome());
+		lbPrecoCompra.setText(""+p.getPrecoCompra());
+		lbPrecoVenda.setText(""+p.getPrecoVenda());
+		lbDescricao.setText(p.getDescricao());
+		
+	}
+	public void listTamanho() throws IOException {
         Node[] nodes = new Node[100];
         for (int i = 1; i <= 0; i++) {
                 nodes[i] = setTamanho(nodes[i]);
@@ -147,15 +156,16 @@ public class DetalheProdutoController implements Initializable{
 	}
     
     public void listCategoria() throws IOException {
-        Node[] nodes = new Node[100];
+        Node[] nodes = new Node[list];
         for (int i = 1; i < 0; i++) {
-                nodes[i] = setCategoria(nodes[i]);
+                nodes[i] = setCategoria(nodes[i], "");
                 hbCategoria.getChildren().add(nodes[i]);
         }
 	}
 
-	private Node setCategoria(Node node) throws IOException {
+	private Node setCategoria(Node node, Object object) throws IOException {
 		node = FXMLLoader.load(getClass().getResource("../view/fxml/TagCategoria.fxml"));
+		Observer.notifyAllListeners(object);
 		return node;
 	}
 	
@@ -172,7 +182,8 @@ public class DetalheProdutoController implements Initializable{
     void addCategoria(ActionEvent event) throws IOException {
     	System.out.println("AddCat:" + lbCategoria.getText());
     	Node node = null;
-    	node = setCategoria(node);
+    	Categoria c = new Categoria(null, false, lbCategoria.getText(), null);
+    	node = setCategoria(node, c);
         hbCategoria.getChildren().add(node);
         System.out.println("hb "+hbCategoria.getId());
     }

@@ -68,7 +68,6 @@ public class ItemProdutoController implements Initializable{
 			@Override
 			public void onScreenChanged(Object userData) {
 				if(idProdu == 9999999) {
-				System.out.println(userData+"po12hieuio1ndui2n1uisnui1sui");
 				p = (Produto) userData;
 				idProdu = p.getId();
 				System.out.println("setando produto "+ p.getId());

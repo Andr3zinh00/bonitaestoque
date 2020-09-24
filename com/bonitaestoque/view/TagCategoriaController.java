@@ -3,6 +3,9 @@ package com.bonitaestoque.view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.bonitaestoque.model.Categoria;
+
+import application.Observer;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +24,8 @@ public class TagCategoriaController implements Initializable{
 
     @FXML
     private Button lbCategoriaExcluir;
+    
+    private Categoria c;
 
     @FXML
     void excluir(ActionEvent event) {
@@ -30,7 +35,17 @@ public class TagCategoriaController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
+			
+			@Override
+			public void onScreenChanged(Object userData) {
+				if(c == null) {
+					c = (Categoria) userData;
+				System.out.println("Categoria: "+userData.toString());
+				lbCategoriaNome.setText(c.getNome());
+				}
+			}
+		});
 		
 	}
 
