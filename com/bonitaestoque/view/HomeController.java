@@ -154,9 +154,11 @@ public class HomeController implements Initializable {
 
 	private Node setProduct(Node nodes, Object object) throws IOException {
 		nodes = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduto.fxml"));
-		//deixa a linha de cima ai, vc estava notificando os listeners antes de instanciar as classes, se fizesse
-		//do jeito que tava fazendo vai dar um nullpointer pq o listener da classe de itemController 
-		//vai receber um objeto vazio!!
+		// deixa a linha de cima ai, vc estava notificando os listeners antes de
+		// instanciar as classes, se fizesse
+		// do jeito que tava fazendo vai dar um nullpointer pq o listener da classe de
+		// itemController
+		// vai receber um objeto vazio!!
 		Observer.notifyAllListeners(object);
 		return nodes;
 	}

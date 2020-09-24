@@ -14,39 +14,39 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class TagCategoriaController implements Initializable{
+public class TagCategoriaController implements Initializable {
 
-    @FXML
-    private HBox itemCagoria;
+	@FXML
+	private HBox itemCagoria;
 
-    @FXML
-    private Text lbCategoriaNome;
+	@FXML
+	private Text lbCategoriaNome;
 
-    @FXML
-    private Button lbCategoriaExcluir;
-    
-    private Categoria c;
+	@FXML
+	private Button lbCategoriaExcluir;
 
-    @FXML
-    void excluir(ActionEvent event) {
-    	Parent node = lbCategoriaExcluir.getParent().getParent();
-        System.out.println(node.getId());
-    }
+	private Categoria c;
+
+	@FXML
+	void excluir(ActionEvent event) {
+		Parent node = lbCategoriaExcluir.getParent().getParent();
+		System.out.println(node.getId());
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
-			
+
 			@Override
 			public void onScreenChanged(Object userData) {
-				if(c == null) {
+				if (c == null) {
 					c = (Categoria) userData;
-				System.out.println("Categoria: "+userData.toString());
-				lbCategoriaNome.setText(c.getNome());
+					System.out.println("Categoria: " + userData.toString());
+					lbCategoriaNome.setText(c.getNome());
 				}
 			}
 		});
-		
+
 	}
 
 }

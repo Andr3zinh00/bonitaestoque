@@ -19,62 +19,63 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ItemProdutoController implements Initializable{
+public class ItemProdutoController implements Initializable {
 
-    @FXML
-    private HBox hbProduct;
+	@FXML
+	private HBox hbProduct;
 
-    @FXML
-    private Label productName;
+	@FXML
+	private Label productName;
 
-    @FXML
-    private Label productPrice;
+	@FXML
+	private Label productPrice;
 
-    @FXML
-    private Label productSize;
-    
-    @FXML
-    private Label lbCategoria;
-    
-    private long idProdu = 9999999;
-    Produto p;
-    
-    @FXML
-    void abrirTelaDetalhe(MouseEvent event) throws IOException {
-    	Node node = (Node) event.getSource();
-    	
-    	Stage stage = (Stage) node.getScene().getWindow();
-    	Stage stageDetalheProduto = new Stage();
-    	Parent root = null;
-    	
-    	URL url = getClass().getResource("../view/fxml/DetalheProduto.fxml");
-    	root = FXMLLoader.load(url); 
+	@FXML
+	private Label productSize;
 
-    	stageDetalheProduto.initModality(Modality.APPLICATION_MODAL);
-        stageDetalheProduto.initOwner(stage);
-        
-    	Scene scene = new Scene(root);
-    	
-    	Observer.notifyAllListeners(p);
-    	stageDetalheProduto.setScene(scene);
-    	stageDetalheProduto.setMaximized(true);
-    	stageDetalheProduto.show();
-    }
+	@FXML
+	private Label lbCategoria;
+
+	private long idProdu = 9999999;
+	Produto p;
+
+	@FXML
+	void abrirTelaDetalhe(MouseEvent event) throws IOException {
+		Node node = (Node) event.getSource();
+
+		Stage stage = (Stage) node.getScene().getWindow();
+		Stage stageDetalheProduto = new Stage();
+		Parent root = null;
+
+		URL url = getClass().getResource("../view/fxml/DetalheProduto.fxml");
+		root = FXMLLoader.load(url);
+
+		stageDetalheProduto.initModality(Modality.APPLICATION_MODAL);
+		stageDetalheProduto.initOwner(stage);
+
+		Scene scene = new Scene(root);
+
+		Observer.notifyAllListeners(p);
+		stageDetalheProduto.setScene(scene);
+		stageDetalheProduto.setMaximized(true);
+		stageDetalheProduto.show();
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
-			
+
 			@Override
 			public void onScreenChanged(Object userData) {
-				if(idProdu == 9999999) {
-				p = (Produto) userData;
-				idProdu = p.getId();
-				System.out.println("setando produto "+ p.getId());
-				productName.setText(p.getNome());
-				productPrice.setText("R$"+p.getPrecoVenda());
-			}}
+				if (idProdu == 9999999) {
+					p = (Produto) userData;
+					idProdu = p.getId();
+					System.out.println("setando produto " + p.getId());
+					productName.setText(p.getNome());
+					productPrice.setText("R$" + p.getPrecoVenda());
+				}
+			}
 		});
 	}
-    
+
 }
