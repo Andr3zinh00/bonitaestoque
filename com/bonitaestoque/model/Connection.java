@@ -20,8 +20,7 @@ public class Connection {
 	}
 
 	/**
-	 * Retorna a conexão com bd se já estiver aberta, retorna o a instancia
-	 * previamente aberta, caso contrario abre uma nova
+	 * Retorna a conexão com bd.
 	 * 
 	 * @return
 	 */

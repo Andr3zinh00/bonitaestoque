@@ -1,71 +1,79 @@
 package com.bonitaestoque.model;
 
-import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Embeddable;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "tamanho_produto")
 public class TamanhoProduto {
 
-	@EmbeddedId
-	private TamanhoProdutoId id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@OneToMany
+	@JoinColumn(name = "id_tamanho", referencedColumnName = "id")
+	private List<Tamanho> tamanho;
+
+	@OneToMany
+	@JoinColumn(name = "id_produto", referencedColumnName = "id")
+	private List<Produto> produto;
+
+	public TamanhoProduto(Long id, List<Tamanho> tamanho, List<Produto> produto, Integer quantidade) {
+		this.id = id;
+		this.tamanho = tamanho;
+		this.produto = produto;
+		this.quantidade = quantidade;
+	}
+
+	public TamanhoProduto(Integer quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public TamanhoProduto() {
+
+	}
+	
 
 	private Integer quantidade;
 
-	public TamanhoProdutoId getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(TamanhoProdutoId id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public List<Tamanho> getTamanho() {
+		return tamanho;
+	}
+
+	public void setTamanho(List<Tamanho> tamanho) {
+		this.tamanho = tamanho;
+	}
+
+	public List<Produto> getProduto() {
+		return produto;
+	}
+
+	public void setProduto(List<Produto> produto) {
+		this.produto = produto;
 	}
 
 	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(TamanhoProdutoId id, Integer quantidade) {
-		this.id = id;
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	
-	//Meu deus...
-	@Embeddable
-	public class TamanhoProdutoId implements Serializable {
-		private static final long serialVersionUID = 1L;
-
-		private Long tamanho_id;
-		private Long produto_id;
-
-		public TamanhoProdutoId(Long tamanho_id, Long produto_id) {
-			this.tamanho_id = tamanho_id;
-			this.produto_id = produto_id;
-		}
-
-		public Long getTamanho_id() {
-			return tamanho_id;
-		}
-
-		public void setTamanho_id(Long tamanho_id) {
-			this.tamanho_id = tamanho_id;
-		}
-
-		public Long getProduto_id() {
-			return produto_id;
-		}
-
-		public void setProduto_id(Long produto_id) {
-			this.produto_id = produto_id;
-		}
-
-	}
-
-	public TamanhoProduto(Integer quantidade) {
-		this.quantidade = quantidade;
-	}
 }
