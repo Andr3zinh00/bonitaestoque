@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbProduct" alignment="CENTER_LEFT" minHeight="60.0" minWidth="0.0" onMouseClicked="#abrirTelaDetalhe" prefHeight="60.0" prefWidth="875.0" styleClass="hbProduct" stylesheets="@../css/fullpackstyling.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bonitaestoque.view.ItemProdutoController">
+<HBox fx:id="hbProduto" alignment="CENTER_LEFT" minHeight="60.0" minWidth="0.0" onMouseClicked="#abrirTelaDetalhe" prefHeight="60.0" prefWidth="875.0" styleClass="hbProduct" stylesheets="@../css/fullpackstyling.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bonitaestoque.view.ItemProdutoController">
    <children>
       <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="productName" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="Camiseta Nike" textAlignment="CENTER" textFill="#191326">
+            <Label fx:id="nome" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="nome" textAlignment="CENTER" textFill="#191326">
                <font>
                   <Font size="16.0" />
                </font>
@@ -22,7 +22,7 @@
       </Pane>
       <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="productPrice" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="R$59,90" textAlignment="CENTER" textFill="#191326">
+            <Label fx:id="precoCompra" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="Preço  Compra" textAlignment="CENTER" textFill="#191326">
                <font>
                   <Font size="16.0" />
                </font>
@@ -34,7 +34,7 @@
       </Pane>
       <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Label fx:id="productSize" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="M" textAlignment="CENTER" textFill="#191326">
+            <Label fx:id="precoVenda" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="Preço  Venda" textAlignment="CENTER" textFill="#191326">
                <font>
                   <Font size="16.0" />
                </font>
@@ -44,21 +44,9 @@
             </Label>
          </children>
       </Pane>
-      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="58.0" prefWidth="270.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="12" textAlignment="CENTER" textFill="#191326">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <padding>
-                  <Insets top="15.0" />
-               </padding>
-            </Label>
-         </children>
-      </Pane>
-      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="198.0" text="Verão/Camiseta" textAlignment="CENTER" textFill="#191326">
+            <Label fx:id="descricao" alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="270.0" text="Descrição" textAlignment="CENTER" textFill="#191326">
                <font>
                   <Font size="16.0" />
                </font>

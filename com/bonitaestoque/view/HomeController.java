@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -41,6 +42,9 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private VBox vbList = null;
+	
+	@FXML
+    private TextField lbPesquisar;
 
 	@FXML
 	private Button btnNovoProduto;
@@ -154,18 +158,21 @@ public class HomeController implements Initializable {
 
 	private Node setProduct(Node nodes, Object object) throws IOException {
 		nodes = FXMLLoader.load(getClass().getResource("../view/fxml/ItemProduto.fxml"));
-		// deixa a linha de cima ai, vc estava notificando os listeners antes de
-		// instanciar as classes, se fizesse
-		// do jeito que tava fazendo vai dar um nullpointer pq o listener da classe de
-		// itemController
-		// vai receber um objeto vazio!!
 		Observer.notifyAllListeners(object);
 		return nodes;
 	}
 
 	@FXML
-	void listSize(ActionEvent event) throws IOException, InterruptedException {
+	void renderLista(ActionEvent event) throws IOException, InterruptedException {
+		listProduto.clear();
+		vbList.getChildren().clear();
+		getAllProducts();
 		listProduct();
+	}
+
+	@FXML
+	void pesquisarProduto(ActionEvent event) {
+		System.out.println(lbPesquisar.getText());
 	}
 
 }

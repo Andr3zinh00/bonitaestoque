@@ -21,20 +21,20 @@ import javafx.stage.Stage;
 
 public class ItemProdutoController implements Initializable {
 
-	@FXML
-	private HBox hbProduct;
+    @FXML
+    private HBox hbProduto;
 
-	@FXML
-	private Label productName;
+    @FXML
+    private Label nome;
 
-	@FXML
-	private Label productPrice;
+    @FXML
+    private Label precoCompra;
 
-	@FXML
-	private Label productSize;
+    @FXML
+    private Label precoVenda;
 
-	@FXML
-	private Label lbCategoria;
+    @FXML
+    private Label descricao;
 
 	private long idProdu = 0;
 	Produto p;
@@ -71,8 +71,10 @@ public class ItemProdutoController implements Initializable {
 					p = (Produto) userData;
 					idProdu = p.getId();
 					System.out.println("setando produto " + p.getId());
-					productName.setText(p.getNome());
-					productPrice.setText("R$" + p.getPrecoVenda());
+					nome.setText(p.getNome());
+					precoCompra.setText("R$"+ p.getPrecoCompra());
+					precoVenda.setText("R$" + p.getPrecoVenda());
+					descricao.setText(p.getDescricao());
 				}
 			}
 		});
