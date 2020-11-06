@@ -75,7 +75,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="btnTamanhoAdd" layoutX="418.0" layoutY="288.0" onAction="#addTamanho" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: D6CEF2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" text="Adiconar Tamanho" textFill="#191326">
+            <Button fx:id="btnTamanhoAdd" layoutX="418.0" layoutY="288.0" onAction="#addTamanho" prefHeight="30.0" prefWidth="179.0" style="-fx-border-color: D6CEF2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" text="Adicionar Tamanho" textFill="#191326">
                <font>
                   <Font size="14.0" />
                </font>
@@ -90,7 +90,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="btnCategoriaAdd" layoutX="278.0" layoutY="460.0" mnemonicParsing="false" onAction="#addCategoria" prefHeight="26.0" prefWidth="158.0" style="-fx-border-color: D6CEF2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" text="Adiconar Categoria" textFill="#191326">
+            <Button fx:id="btnCategoriaAdd" layoutX="278.0" layoutY="460.0" mnemonicParsing="false" onAction="#addCategoria" prefHeight="26.0" prefWidth="158.0" style="-fx-border-color: D6CEF2; -fx-border-radius: 4;" stylesheets="@../css/fullpackstyling.css" text="Adicionar Categoria" textFill="#191326">
                <font>
                   <Font size="14.0" />
                </font>

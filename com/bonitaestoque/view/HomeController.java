@@ -47,7 +47,7 @@ public class HomeController implements Initializable {
 	private CRUDServiceImpl<Produto> service = new CRUDServiceImpl<Produto>();
 
 	// lista de produtos
-	private List<Produto> list = new ArrayList<Produto>();
+	private List<Produto> listProduto = new ArrayList<Produto>();
 	private boolean isLoadingProducts = true;
 
 	@Override
@@ -113,9 +113,9 @@ public class HomeController implements Initializable {
 				@Override
 				public void handle(WorkerStateEvent event) {
 					System.out.println("handle");
-					list.addAll(task.getValue());
+					listProduto.addAll(task.getValue());
 					System.out.println(isLoadingProducts);
-					System.out.println(list);
+					System.out.println(listProduto);
 
 					try {
 						listProduct();
@@ -135,7 +135,7 @@ public class HomeController implements Initializable {
 			// USAR O ON FAILED PRA TRATAR ERROR E.G: MOSTRAR MENSAGENS DE ERRO
 			// task.setOnFailed(value);
 			new Thread(task).start();
-			System.out.println(list);
+			System.out.println(listProduto);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,9 +144,9 @@ public class HomeController implements Initializable {
 
 	public void listProduct() throws IOException, InterruptedException {
 		vbList.getChildren().clear();
-		Node[] nodes = new Node[list.size()];
-		for (int i = 0; i < list.size(); i++) {
-			Produto p = list.get(i);
+		Node[] nodes = new Node[listProduto.size()];
+		for (int i = 0; i < listProduto.size(); i++) {
+			Produto p = listProduto.get(i);
 			nodes[i] = setProduct(nodes[i], p);
 			vbList.getChildren().add(nodes[i]);
 		}

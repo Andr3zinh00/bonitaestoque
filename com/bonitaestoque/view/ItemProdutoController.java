@@ -36,7 +36,7 @@ public class ItemProdutoController implements Initializable {
 	@FXML
 	private Label lbCategoria;
 
-	private long idProdu = 9999999;
+	private long idProdu = 0;
 	Produto p;
 
 	@FXML
@@ -67,7 +67,7 @@ public class ItemProdutoController implements Initializable {
 
 			@Override
 			public void onScreenChanged(Object userData) {
-				if (idProdu == 9999999) {
+				if (idProdu == 0) {
 					p = (Produto) userData;
 					idProdu = p.getId();
 					System.out.println("setando produto " + p.getId());

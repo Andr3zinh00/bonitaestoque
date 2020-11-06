@@ -2,6 +2,8 @@ package com.bonitaestoque.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.bonitaestoque.model.Categoria;
@@ -113,6 +115,9 @@ public class DetalheProdutoController implements Initializable {
 
 	private Produto p;
 
+	private List<Categoria> listCategoria = new ArrayList<Categoria>();
+	private List<Tamanho> listTamanho = new ArrayList<Tamanho>();
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		Observer.addOnChangeScreenLister(new Observer.OnChangeScreen() {
@@ -145,8 +150,8 @@ public class DetalheProdutoController implements Initializable {
 	}
 
 	public void listTamanho() throws IOException {
-		Node[] nodes = new Node[100];
-		for (int i = 1; i <= 0; i++) {
+		Node[] nodes = new Node[listTamanho.size()];
+		for (int i = 1; i <= listTamanho.size(); i++) {
 			nodes[i] = setTamanho(nodes[i], null);
 			vbTamanho.getChildren().add(nodes[i]);
 		}
@@ -159,9 +164,10 @@ public class DetalheProdutoController implements Initializable {
 	}
 
 	public void listCategoria() throws IOException {
-		Node[] nodes = new Node[10];
-		for (int i = 1; i < 0; i++) {
-			nodes[i] = setCategoria(nodes[i], "");
+		Node[] nodes = new Node[listCategoria.size()];
+		for (int i = 1; i < listCategoria.size(); i++) {
+			Categoria c = listCategoria.get(i);
+			nodes[i] = setCategoria(nodes[i], c);
 			hbCategoria.getChildren().add(nodes[i]);
 		}
 	}
@@ -174,8 +180,8 @@ public class DetalheProdutoController implements Initializable {
 
 	@FXML
 	void addTamanho(ActionEvent event) throws IOException {
-		System.out.println("AddTam:" + lbTamanho.getText() + " " + lbQuantidade.getText());
-		Tamanho t = new Tamanho(lbTamanho.getText(), Integer.parseInt(lbQuantidade.getText()));
+		Tamanho t = new Tamanho(lbTamanho.getText().toUpperCase(), Integer.parseInt(lbQuantidade.getText()));
+		listTamanho.add(t);
 		Node node = null;
 		node = setTamanho(node, t);
 		vbTamanho.getChildren().add(node);
@@ -183,12 +189,11 @@ public class DetalheProdutoController implements Initializable {
 
 	@FXML
 	void addCategoria(ActionEvent event) throws IOException {
-		System.out.println("AddCat:" + lbCategoria.getText());
 		Node node = null;
 		Categoria c = new Categoria(null, false, lbCategoria.getText(), null);
+		listCategoria.add(c);
 		node = setCategoria(node, c);
 		hbCategoria.getChildren().add(node);
-		System.out.println("hb " + hbCategoria.getId());
 	}
 
 	@FXML
