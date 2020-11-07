@@ -9,9 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -42,9 +47,9 @@ public class HomeController implements Initializable {
 
 	@FXML
 	private VBox vbList = null;
-	
+
 	@FXML
-    private TextField lbPesquisar;
+	private TextField lbPesquisar;
 
 	@FXML
 	private Button btnNovoProduto;
@@ -105,13 +110,6 @@ public class HomeController implements Initializable {
 					return service.getAll(Produto.class);
 				}
 			};
-
-			// como o nome sugere, vai ser chamado quando a task for sucedida
-			/**
-			 * JOAO, FAZ O QUE VC TAVA FAZENDO NO listProducts AQUI DENTRO NO handle(), SE
-			 * VC USAR "task.getValue()" VAI PEGAR A LISTA DE TODOS OS PRODUTOS DO BANCO DE
-			 * DADOS
-			 */
 			task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
 
 				@Override
@@ -124,8 +122,8 @@ public class HomeController implements Initializable {
 					try {
 						listProduct();
 					} catch (IOException | InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						Alert alert = new Alert(AlertType.ERROR, e.getMessage(), ButtonType.OK);
+						alert.showAndWait();
 					}
 
 					// isso é apenas um teste pra testar o update, ta funcionando
@@ -171,8 +169,14 @@ public class HomeController implements Initializable {
 	}
 
 	@FXML
-	void pesquisarProduto(ActionEvent event) {
-		System.out.println(lbPesquisar.getText());
+	void get(ActionEvent event) {
+		Alert alert = new Alert(AlertType.ERROR, "Pesquisa", ButtonType.OK);
+		alert.showAndWait();
+	}
+
+	@FXML
+	void pesquisarProduto(KeyEvent event) {
+		
 	}
 
 }

@@ -52,7 +52,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Button fx:id="btnSalvar" layoutX="331.0" layoutY="610.0" mnemonicParsing="false" onAction="#CriarNovoProduto" styleClass="btnNovoProduto" stylesheets="@../css/fullpackstyling.css" text="Salvar" textFill="WHITE">
+            <Button fx:id="btnSalvar" layoutX="331.0" layoutY="610.0" mnemonicParsing="false" onAction="#handleCreate" styleClass="btnNovoProduto" stylesheets="@../css/fullpackstyling.css" text="Salvar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

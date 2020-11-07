@@ -80,7 +80,7 @@ public class DetalheProdutoController implements Initializable {
 	}
 
 	@FXML
-	void deletarProduto(ActionEvent event) {
+	void handleDelete(ActionEvent event) {
 		try {
 			CRUDServiceImpl<Produto> crud = new CRUDServiceImpl<Produto>();
 			crud.delete(Produto.class, p.getId());
@@ -97,7 +97,7 @@ public class DetalheProdutoController implements Initializable {
 	}
 	
 	@FXML
-	void atualizarProduto(ActionEvent event) {
+	void handleUpdate(ActionEvent event) {
 		try {
 			CRUDServiceImpl<Produto> crud = new CRUDServiceImpl<Produto>();
 			p.setDescricao(lbDescricao.getText());
