@@ -126,16 +126,9 @@ public class HomeController implements Initializable {
 						alert.showAndWait();
 					}
 
-					// isso é apenas um teste pra testar o update, ta funcionando
-//					Produto p = list.get(0);
-//					p.setNome("TESTE2");
-//					service.update(p);
-
 				}
 			});
 
-			// USAR O ON FAILED PRA TRATAR ERROR E.G: MOSTRAR MENSAGENS DE ERRO
-			// task.setOnFailed(value);
 			new Thread(task).start();
 			System.out.println(listProduto);
 
